@@ -1,0 +1,37 @@
+def main():
+        with open('5.dat', 'r') as file:
+                seats = set()
+                for line in file:
+                        line = line.strip()
+                        row, col, seat_id = stats_for_seat(line)
+                        seats.add(seat_id)
+
+                found = False
+                for i in range(128 * 8):
+                        if i in seats:
+                                found = True
+                        elif found:
+                                return i
+
+def stats_for_seat(seat):
+        low = 0
+        high = 128
+        for c in seat[:7]:
+                if c == 'B':
+                        low = (low + high) / 2
+                else:
+                        high = (low + high) / 2
+        row = low
+
+        low = 0
+        high = 8
+        for c in seat[7:]:
+                if c == 'R':
+                        low = (low + high) / 2
+                else:
+                        high = (low + high) / 2
+        col = low
+        seat_id = row * 8 + col
+        return (row, col, seat_id)
+        
+print(main())
