@@ -37,6 +37,7 @@ def string_to_min_value(string):
 			left += 1 << (SIZE - 1 - i)
 			right += 1 << i
 
+	assert left != right
 	return left if left < right else right
 
 
