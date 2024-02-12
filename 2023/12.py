@@ -28,9 +28,9 @@ def n_possible_arrangements(record, numbers):
 	return out
 
 def n_possible_arrangements_unfolded(record, numbers):
-	print(record, numbers)
+	#print(record, numbers)
 	out = n_possible_arrangements_recursive([], '?'.join([record] * 5), numbers * 5, dict())
-	print(out)
+	#print(out)
 	return out
 
 def n_possible_arrangements_recursive(prefix, record, numbers, cache=None):
